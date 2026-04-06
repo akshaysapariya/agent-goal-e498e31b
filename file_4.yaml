@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Serverless Search Backend
+
+Resources:
+  SearchFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda/
+      Handler: index.handler
+      Runtime: nodejs18.x
+      MemorySize: 256
+      Timeout: 10
+      Environment:
+        Variables:
+          API_KEY: !Ref ApiKeyParameter
+      Events:
+        SearchApi:
+          Type: Api
+          Properties:
+            Path: /search
+            Method: GET
+
+Parameters:
+  ApiKeyParameter:
+    Type: String
+    NoEcho: true
+    Description: API key for the search service
+
+Outputs:
+  ApiUrl:
+    Description: "API Gateway Endpoint"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/search"
