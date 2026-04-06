@@ -1,0 +1,6 @@
+search-lambda/
+├── lambda/
+│   ├── index.js       # Lambda function
+│   └── package.json   # Dependencies
+├── template.yaml      # AWS SAM template
+└── README.md
