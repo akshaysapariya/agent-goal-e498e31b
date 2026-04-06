@@ -1,0 +1,1 @@
+GET /search?query=aws+lambda&apiKey=your_key
