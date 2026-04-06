@@ -1,0 +1,1 @@
+curl "https://YOUR_API_ID.execute-api.REGION.amazonaws.com/Prod/search?query=serverless&apiKey=YOUR_API_KEY"
